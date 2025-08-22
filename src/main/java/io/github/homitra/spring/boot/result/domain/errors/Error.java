@@ -11,7 +11,7 @@ package io.github.homitra.spring.boot.result.domain.errors;
  * 
  * @author Smit Joshi
  * @see <a href="https://in.linkedin.com/in/smit-joshi814">LinkedIn Profile</a>
- * @since 1.0.0
+ * @since 0.0.1
  */
 public class Error {
     private String message;
