@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>3.5.6</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.homitra</groupId>
 	<artifactId>spring-boot-starter-result</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>spring-boot-starter-result</name>
 	<description>Spring Boot starter for Result Pattern implementation</description>
 	<url>https://github.com/homitra/spring-boot-starter-result</url>
