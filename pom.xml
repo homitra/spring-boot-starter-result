@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>io.github.homitra</groupId>
 	<artifactId>spring-boot-starter-result</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>spring-boot-starter-result</name>
 	<description>Spring Boot starter for Result Pattern implementation</description>
 	<url>https://github.com/homitra/spring-boot-starter-result</url>
@@ -38,7 +38,7 @@
 		<url>https://github.com/homitra/spring-boot-starter-result/tree/main</url>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
