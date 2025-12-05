@@ -5,6 +5,7 @@ import io.github.homitra.spring.boot.result.Result;
 import io.github.homitra.spring.boot.result.domain.errors.EntityAlreadyExistsError;
 import io.github.homitra.spring.boot.result.domain.errors.EntityNotFoundError;
 import io.github.homitra.spring.boot.result.domain.errors.Error;
+import io.github.homitra.spring.boot.result.domain.errors.ForbiddenError;
 import io.github.homitra.spring.boot.result.domain.errors.UnauthorizedError;
 import io.github.homitra.spring.boot.result.domain.errors.ValidationError;
 import io.github.homitra.spring.boot.result.infrastructure.config.ResultConstantsProvider;
@@ -65,6 +66,7 @@ public final class ResponseUtils {
      *   <li>EntityNotFoundError → 404 NOT_FOUND</li>
      *   <li>ValidationError → 400 BAD_REQUEST</li>
      *   <li>UnauthorizedError → 401 UNAUTHORIZED</li>
+     *   <li>ForbiddenError → 403 FORBIDDEN</li>
      *   <li>EntityAlreadyExistsError → 409 CONFLICT</li>
      *   <li>Other errors → 500 INTERNAL_SERVER_ERROR</li>
      *   <li>Success → 200 OK</li>
@@ -85,6 +87,8 @@ public final class ResponseUtils {
         return switch (exception) {
             case UnauthorizedError e ->
                 new ResponseEntity<>(ResponseWrapper.failure(e.getMessage()), HttpStatus.UNAUTHORIZED);
+            case ForbiddenError e ->
+                new ResponseEntity<>(ResponseWrapper.failure(e.getMessage()), HttpStatus.FORBIDDEN);
             case EntityNotFoundError e ->
                 new ResponseEntity<>(ResponseWrapper.failure(e.getMessage()), HttpStatus.NOT_FOUND);
             case EntityAlreadyExistsError e ->

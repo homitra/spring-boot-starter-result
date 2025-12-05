@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import io.github.homitra.spring.boot.result.domain.errors.EntityAlreadyExistsError;
 import io.github.homitra.spring.boot.result.domain.errors.EntityNotFoundError;
 import io.github.homitra.spring.boot.result.domain.errors.Error;
+import io.github.homitra.spring.boot.result.domain.errors.ForbiddenError;
 import io.github.homitra.spring.boot.result.domain.errors.UnauthorizedError;
 import io.github.homitra.spring.boot.result.domain.errors.ValidationError;
 import io.github.homitra.spring.boot.result.infrastructure.config.ResultConstantsProvider;
@@ -100,6 +101,17 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
 
     public static <T> Result<T> unauthorizedError(String message) {
         return new Result<T>(false, new UnauthorizedError(message));
+    }
+
+    /**
+     * Creates a forbidden error Result.
+     * 
+     * @param <T> the type of data
+     * @param message the error message
+     * @return forbidden error Result
+     */
+    public static <T> Result<T> forbiddenError(String message) {
+        return new Result<T>(false, new ForbiddenError(message));
     }
 
     /**

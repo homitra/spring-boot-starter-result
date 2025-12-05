@@ -9,13 +9,13 @@ A Spring Boot library that implements the Result pattern for elegant error handl
 <dependency>
     <groupId>io.github.homitra</groupId>
     <artifactId>spring-boot-starter-result</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-implementation 'io.github.homitra:spring-boot-starter-result:1.0.0'
+implementation 'io.github.homitra:spring-boot-starter-result:0.0.5'
 ```
 
 ## Usage
@@ -32,6 +32,7 @@ Result<User> result = Result.success(user);
 Result<User> result = Result.entityNotFoundError("User not found");
 Result<User> result = Result.validationError("Invalid data");
 Result<User> result = Result.unauthorizedError("Access denied");
+Result<User> result = Result.forbiddenError("Insufficient permissions");
 Result<User> result = Result.entityAlreadyExistsError("User exists");
 ```
 
@@ -233,6 +234,7 @@ ResponseUtils automatically returns appropriate status codes:
 - `EntityNotFoundError` → 404 NOT_FOUND
 - `ValidationError` → 400 BAD_REQUEST  
 - `UnauthorizedError` → 401 UNAUTHORIZED
+- `ForbiddenError` → 403 FORBIDDEN
 - `EntityAlreadyExistsError` → 409 CONFLICT
 - Other errors → 500 INTERNAL_SERVER_ERROR
 - Success → 200 OK
