@@ -23,8 +23,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "homitra",
-  projectName: "spring-boot-starter-result",
+  // organizationName: "homitra",
+  // projectName: "spring-boot-starter-result",
 
   deploymentBranch: "gh-pages",
 
