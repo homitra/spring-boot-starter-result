@@ -16,17 +16,17 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: process.env.DOCUSAURUS_URL || "https://packages.smitjoshi.dev",
+  url: process.env.DOCUSAURUS_URL || "https://homitra.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.DOCUSAURUS_BASE_URL || "/spring-boot-starter-result/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  // organizationName: "homitra",
-  // projectName: "spring-boot-starter-result",
+  organizationName: "homitra",
+  projectName: "spring-boot-starter-result",
 
-  // deploymentBranch: "gh-pages",
+  deploymentBranch: "gh-pages",
 
   onBrokenLinks: "warn",
 
