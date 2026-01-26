@@ -19,7 +19,7 @@ const config: Config = {
   url: process.env.DOCUSAURUS_URL || "https://packages.smitjoshi.dev",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASE_URL || "https://packages.smitjoshi.dev/spring-boot-starter-result/",
+  baseUrl: process.env.DOCUSAURUS_BASE_URL || "/spring-boot-starter-result/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
