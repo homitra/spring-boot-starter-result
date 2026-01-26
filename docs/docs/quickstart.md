@@ -126,6 +126,6 @@ public class ResultConfig {
 
 - Set up [Configuration](./configuration) for advanced features
 - Explore [Examples](./examples) for practical usage
-- Check [Advanced Features](./advanced/) for validation chains, async operations, and events
+- Check [Advanced Features](./advanced) for validation chains, async operations, and events
 
 You can start using the basic Result pattern immediately. Advanced features require additional configuration.
