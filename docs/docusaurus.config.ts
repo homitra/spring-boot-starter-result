@@ -26,7 +26,7 @@ const config: Config = {
   // organizationName: "homitra",
   // projectName: "spring-boot-starter-result",
 
-  deploymentBranch: "gh-pages",
+  // deploymentBranch: "gh-pages",
 
   onBrokenLinks: "warn",
 
