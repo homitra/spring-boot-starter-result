@@ -9,7 +9,7 @@ A Spring Boot library that implements the Result pattern for elegant error handl
 <dependency>
     <groupId>io.github.homitra</groupId>
     <artifactId>spring-boot-starter-result</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.9</version>
 </dependency>
 ```
 
