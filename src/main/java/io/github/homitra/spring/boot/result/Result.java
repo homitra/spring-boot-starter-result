@@ -1,7 +1,12 @@
 package io.github.homitra.spring.boot.result;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.github.homitra.spring.boot.result.domain.errors.EntityAlreadyExistsError;
 import io.github.homitra.spring.boot.result.domain.errors.EntityNotFoundError;
@@ -19,10 +24,16 @@ import java.util.ArrayList;
 /**
  * Main Result class implementing the Result pattern for elegant error handling.
  * 
- * <p>This class provides a type-safe way to handle operations that can either succeed or fail,
- * eliminating the need for exception-based error handling in many scenarios.</p>
+ * <p>
+ * This class provides a type-safe way to handle operations that can either
+ * succeed or fail,
+ * eliminating the need for exception-based error handling in many scenarios.
+ * </p>
  * 
- * <p>Example usage:</p>
+ * <p>
+ * Example usage:
+ * </p>
+ * 
  * <pre>{@code
  * Result<User> result = Result.success(user);
  * if (result.isSuccess()) {
@@ -40,6 +51,18 @@ import java.util.ArrayList;
 public final class Result<T> extends ResultBase implements TransactionalOperation {
     private T data;
     private String message;
+
+    @JsonCreator
+    public Result(@JsonProperty("data") T data, @JsonProperty("message") String message,
+            @JsonProperty("success") boolean success, @JsonProperty("error") Error error) {
+        super(success, success ? null : error);
+        this.data = data;
+        this.message = message != null
+                ? message
+                : success
+                        ? ResultConstantsProvider.getResultConstants().getSuccessMessage()
+                        : error.getMessage();
+    }
 
     public Result(T data) {
         super(true, null);
@@ -75,7 +98,7 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
     /**
      * Creates a successful Result with data.
      * 
-     * @param <T> the type of data
+     * @param <T>  the type of data
      * @param data the success data
      * @return successful Result
      */
@@ -106,7 +129,7 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
     /**
      * Creates a forbidden error Result.
      * 
-     * @param <T> the type of data
+     * @param <T>     the type of data
      * @param message the error message
      * @return forbidden error Result
      */
@@ -117,7 +140,7 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
     /**
      * Creates an entity not found error Result.
      * 
-     * @param <T> the type of data
+     * @param <T>     the type of data
      * @param message the error message
      * @return entity not found error Result
      */
@@ -132,7 +155,7 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
     /**
      * Creates a validation error Result.
      * 
-     * @param <T> the type of data
+     * @param <T>     the type of data
      * @param message the error message
      * @return validation error Result
      */
@@ -190,14 +213,14 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
     }
 
     // Conditional Operations
-    public Result<T> onSuccess(java.util.function.Consumer<T> action) {
+    public Result<T> onSuccess(Consumer<T> action) {
         if (isSuccess() && data != null) {
             action.accept(data);
         }
         return this;
     }
 
-    public Result<T> onFailure(java.util.function.Consumer<Error> action) {
+    public Result<T> onFailure(Consumer<Error> action) {
         if (!isSuccess() && getError() != null) {
             action.accept(getError());
         }
@@ -215,7 +238,7 @@ public final class Result<T> extends ResultBase implements TransactionalOperatio
         return isSuccess() ? this : alternative;
     }
 
-    public T orElseGet(java.util.function.Supplier<T> supplier) {
+    public T orElseGet(Supplier<T> supplier) {
         return isSuccess() ? data : supplier.get();
     }
 }
