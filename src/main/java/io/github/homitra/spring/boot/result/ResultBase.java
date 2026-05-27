@@ -41,6 +41,15 @@ sealed class ResultBase permits Result {
     }
 
     /**
+     * Checks if the result represents a failed operation.
+     * 
+     * @return true if failed, false otherwise
+     */
+    public boolean isError() {
+        return !success;
+    }
+
+    /**
      * Gets the error information for failed results.
      * 
      * @return the error object, null for successful results

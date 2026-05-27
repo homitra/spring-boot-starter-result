@@ -15,13 +15,13 @@ A Spring Boot library that implements the Result pattern for elegant error handl
 <dependency>
     <groupId>io.github.homitra</groupId>
     <artifactId>spring-boot-starter-result</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.11</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-implementation 'io.github.homitra:spring-boot-starter-result:0.0.9'
+implementation 'io.github.homitra:spring-boot-starter-result:0.0.11'
 ```
 
 ## The Problem with Traditional Exception Handling

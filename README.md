@@ -28,6 +28,15 @@ import io.github.homitra.spring.boot.result.Result;
 // Success
 Result<User> result = Result.success(user);
 
+// Check result status
+if (result.isSuccess()) {
+    User data = result.getData();
+}
+
+if (result.isError()) {
+    Error error = result.getError();
+}
+
 // Error
 Result<User> result = Result.entityNotFoundError("User not found");
 Result<User> result = Result.validationError("Invalid data");
